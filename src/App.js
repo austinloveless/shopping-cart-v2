@@ -31,6 +31,19 @@ async componentDidMount() {
   this.setState({products: json})
 }
 
+async createItem(item) {
+   const response = await fetch('http://localhost:8082/api/people', {
+     method: 'POST',
+     body: JSON.stringify(item),
+     headers: {
+       'Content-Type': 'application/json',
+       'Accept': 'application/json',
+     }
+   })
+   const moreItems = await response.json()
+   this.setState({products: [...this.state.products, moreItems]})
+ }
+
 addItems = (item) => {
   const { cartItemsList } = this.state
   this.setState({
