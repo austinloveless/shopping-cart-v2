@@ -26,9 +26,10 @@ cartItemsList: [
 }
 
 async componentDidMount() {
-  const response = await fetch('http://localhost:8082/api/products')
-  const json = await response.json()
-  this.setState({products: json})
+  const productsResponse = await fetch(`/api/products`)
+  const productsJSON = await productsResponse.json()
+  this.setState({products: productsJSON})
+
 }
 
 async createItem(item) {
